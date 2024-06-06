@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 
 function Filter() {
+  // States for the Inputs
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
+  const [patientName, setPatientName] = useState("");
+  const [billNo, setBillNo] = useState("");
+  const [hospitalId, setHospitalId] = useState("");
+  const [referBy, setReferBy] = useState("");
+  const [status, setStatus] = useState("");
+
+  // Clear values Function
+  const clearInputs = () => {
+    setFromDate("");
+    setToDate("");
+    setPatientName("");
+    setBillNo("");
+    setHospitalId("");
+    setReferBy("");
+    setStatus("");
+  };
+
   return (
     <div>
-      {/* Filter Options  */}
+      {/* Filter Options */}
       <div className="flex flex-row justify-evenly bg-[white] py-10 mt-5 border-[1px] border-zinfog-black mx-5">
-        {/* Input Column 1  */}
+        {/* Input Column 1 */}
         <div className="flex flex-col poppins-regular space-y-2">
           <div className="flex items-center gap-2">
             <label htmlFor="from-date" className="w-32">
@@ -16,7 +36,10 @@ function Filter() {
             <input
               type="date"
               id="from-date"
-              className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3 "
+              value={fromDate}
+              //  clear the value in the input  using Onchange
+              onChange={(e) => setFromDate(e.target.value)}
+              className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3"
             />
           </div>
           <div className="flex items-center gap-2">
@@ -26,6 +49,8 @@ function Filter() {
             <input
               type="text"
               id="patient-name"
+              value={patientName}
+              onChange={(e) => setPatientName(e.target.value)}
               className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3"
             />
           </div>
@@ -36,12 +61,14 @@ function Filter() {
             <input
               type="text"
               id="bill-no"
+              value={billNo}
+              onChange={(e) => setBillNo(e.target.value)}
               className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3"
             />
           </div>
         </div>
 
-        {/* Input Column 2  */}
+        {/* Input Column 2 */}
         <div className="flex flex-col poppins-regular space-y-2">
           <div className="flex items-center gap-2">
             <label htmlFor="to-date" className="w-32">
@@ -50,7 +77,9 @@ function Filter() {
             <input
               type="date"
               id="to-date"
-              className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3 "
+              value={toDate}
+              onChange={(e) => setToDate(e.target.value)}
+              className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3"
             />
           </div>
           <div className="flex items-center gap-2">
@@ -60,12 +89,14 @@ function Filter() {
             <input
               type="text"
               id="hospital-id"
-              className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3 "
+              value={hospitalId}
+              onChange={(e) => setHospitalId(e.target.value)}
+              className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3"
             />
           </div>
         </div>
 
-        {/* Input Column 3  */}
+        {/* Input Column 3 */}
         <div className="flex flex-col poppins-regular space-y-2">
           <div className="flex items-center gap-2">
             <label htmlFor="refer-by" className="w-32">
@@ -74,8 +105,11 @@ function Filter() {
             <select
               name="doctors"
               id="refer-by"
-              className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3 "
+              value={referBy}
+              onChange={(e) => setReferBy(e.target.value)}
+              className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3"
             >
+              <option value="">Select Doctor</option>
               <option value="doctor1">Doctor 1</option>
               <option value="doctor2">Doctor 2</option>
               <option value="doctor3">Doctor 3</option>
@@ -88,8 +122,11 @@ function Filter() {
             <select
               name="status"
               id="status"
-              className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3 "
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+              className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3"
             >
+              <option value="">Select Status</option>
               <option value="ready">Ready</option>
               <option value="progress">In Progress</option>
               <option value="notready">Not Ready</option>
@@ -97,7 +134,7 @@ function Filter() {
           </div>
         </div>
       </div>
-      {/* Filter Buttons  */}
+      {/* Filter Buttons */}
       <div className="flex flex-row justify-between items-center mx-5 px-2 border-[1px] border-zinfog-black h-[70px]">
         <div>
           <p className="poppins-regular text-zinfog-black text-[16px]">
@@ -105,11 +142,14 @@ function Filter() {
           </p>
         </div>
         <div className="flex flex-row gap-5">
-          <button className="flex items-center bg-zinfog-primary text-white p-2 w-[100px] rounded-[5px] ">
+          <button className="flex items-center bg-zinfog-primary text-white p-2 w-[100px] rounded-[5px]">
             <FiSearch className="text-[20px]" />
             Search
           </button>
-          <button className="flex items-center  bg-[#f46c09] text-white p-2 w-[100px] rounded-[5px] F">
+          <button
+            className="flex items-center bg-[#f46c09] text-white p-2 w-[100px] rounded-[5px]"
+            onClick={clearInputs}
+          >
             <RxCross2 className="text-[20px]" />
             Clear
           </button>

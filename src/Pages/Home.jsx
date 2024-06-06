@@ -2,8 +2,14 @@ import React from "react";
 import { FiSearch } from "react-icons/fi";
 import { IoFunnelSharp } from "react-icons/io5";
 import Filter from "../Components/Filter";
+import { useState } from "react";
 
 function Home() {
+  const [showFilter, setShowFilter] = useState(false);
+
+  const toggleFilter = () => {
+    setShowFilter((prev) => !prev);
+  };
   return (
     <div className="bg-[#e4fbfb] h-screen">
       {/* Head Section Including Filter and Search  */}
@@ -12,7 +18,10 @@ function Home() {
           Patient Reports
         </h1>
         <div className="flex flex-row justify-center items-center gap-5">
-          <button className="flex flex-row items-center bg-zinfog-primary p-1 text-[white] poppins-regular gap-2 rounded-[5px]">
+          <button
+            className="flex flex-row items-center bg-zinfog-primary p-1 text-[white] poppins-regular gap-2 rounded-[5px]"
+            onClick={toggleFilter}
+          >
             Apply Filter
             <IoFunnelSharp />
           </button>
@@ -26,7 +35,14 @@ function Home() {
           </div>
         </div>
       </div>
-      <Filter />
+      <div
+        className={`transition-all duration-300 ease-in-out ${
+          showFilter ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+        }`}
+      >
+        <Filter />
+      </div>
+     
     </div>
   );
 }
