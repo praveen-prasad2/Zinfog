@@ -14,7 +14,7 @@ function Login() {
     const data = new URLSearchParams();
     data.append("client_id", "ei0gvH1bk8wNVj0xqKgtGVzxa3yWXa");
     data.append("client_secret", "Yjq2KXplGi6Niarcp1gn6PP7OrMDlP");
-    data.append("user_name", "aswini@b2b.com");
+    data.append("user_name", "daya");
     data.append("password", "123");
     data.append("grant_type", "client_credentials");
 
