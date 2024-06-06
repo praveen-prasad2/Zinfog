@@ -49,10 +49,11 @@
 }
 
 .header-item {
-  width: 120px;
+  width: 150px;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: start;
   text-align: center;
 }
+
