@@ -12,7 +12,7 @@ function Home() {
     setShowFilter((prev) => !prev);
   };
   return (
-    <div className="bg-[#e4fbfb] h-screen">
+    <div className="bg-[#e4fbfb] h-auto">
       {/* Head Section Including Filter and Search  */}
       <div className=" flex flex-row justify-between px-10 pt-5">
         <h1 className="poppins-semibold text-[20px] text-zinfog-primary">

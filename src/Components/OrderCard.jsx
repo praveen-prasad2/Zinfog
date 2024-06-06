@@ -18,7 +18,7 @@ function OrderCard({item}) {
   return (
     <>
     
-    <div className="bg-white mx-5 text-[14px]">
+    <div className="bg-white mx-5 text-[14px] border-zinfog-black border-b-2">
          <div  className="flex flex-row justify-between px-5  items-center poppins-regular">
           <div className="header-item">
             <h1>{item?.order_no}</h1>
