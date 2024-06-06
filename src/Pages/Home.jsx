@@ -4,8 +4,8 @@ import Footer from "../Components/Footer";
 
 function Home() {
   return (
-    <div>
-      <Header />
+    <div className="bg-[]">
+      {/* <Header /> */}
       <h1 className="text-red-600">Hadi Razal</h1>
       {/* <Footer /> */}
     </div>

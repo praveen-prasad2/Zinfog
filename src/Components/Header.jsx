@@ -1,11 +1,18 @@
 import React from "react";
 import { FiLogOut } from "react-icons/fi";
+import { useLocation } from "react-router-dom";
 
 function Header() {
+
+// Hide Header in the Login Page 
+
+  if (location.pathname === "/login") {
+    return null;
+  }
   return (
     <div className="flex flex-row items-center justify-between px-20 py-5 border-b-2">
       <div>
-        <img src="/Images/logo.png" alt="" className="cursor-pointer"/>
+        <img src="/Images/logo.png" alt="" className="cursor-pointer" />
       </div>
       <div className="flex flex-row  items-center justify-center gap-5">
         <h1 className="poppins-semibold text-[14px] text-[#505050]">
