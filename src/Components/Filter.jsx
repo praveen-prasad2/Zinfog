@@ -110,9 +110,10 @@ function Filter() {
               className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3"
             >
               <option value="">Select Doctor</option>
-              <option value="doctor1">Doctor 1</option>
-              <option value="doctor2">Doctor 2</option>
-              <option value="doctor3">Doctor 3</option>
+              <option value="doctor1">Dr. Arun K Thambi</option>
+              <option value="doctor2">Dr. Abdul Siddique</option>
+              <option value="doctor3">Dr. Raveendran</option>
+              <option value="doctor3">Dr. Vignesh Muraleedharan</option>
             </select>
           </div>
           <div className="flex items-center gap-2">
@@ -128,8 +129,8 @@ function Filter() {
             >
               <option value="">Select Status</option>
               <option value="ready">Ready</option>
-              <option value="progress">In Progress</option>
-              <option value="notready">Not Ready</option>
+              <option value="progress">Partial Report</option>
+              <option value="notready">Lab Dropped</option>
             </select>
           </div>
         </div>

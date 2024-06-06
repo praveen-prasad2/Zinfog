@@ -3,6 +3,7 @@ import { FiSearch } from "react-icons/fi";
 import { IoFunnelSharp } from "react-icons/io5";
 import Filter from "../Components/Filter";
 import { useState } from "react";
+import Orders from "../Components/Orders";
 
 function Home() {
   const [showFilter, setShowFilter] = useState(false);
@@ -35,6 +36,7 @@ function Home() {
           </div>
         </div>
       </div>
+      {/* Filter Component  */}
       <div
         className={`transition-all duration-300 ease-in-out ${
           showFilter ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
@@ -42,7 +44,10 @@ function Home() {
       >
         <Filter />
       </div>
-     
+     {/* Orders Component  */}
+     <div>
+      <Orders/>
+     </div>
     </div>
   );
 }
