@@ -13,7 +13,7 @@ function Footer() {
 
   return (
     <>
-      <div className="h-[100px] bg-[#e4fbfb] flex flex-row justify-around items-center fixed w-screen bottom-0 left-0 ">
+      <div className="h-[100px] bg-[#e4fbfb] flex flex-row justify-around items-center ">
         <div>
           <p className="text-[#505050] poppins-regular text-[14px]">
             Copyright © 2023 Access Home Lab Solutions
