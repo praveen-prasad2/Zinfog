@@ -56,3 +56,20 @@
   justify-content: start;
   text-align: center;
 }
+
+
+.pagination-active-link{
+  color: white;
+}
+
+.pagination-page{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  width: 40px; 
+  height: 40px;
+  background-color: #1f6acb;
+  color: #505050;
+ padding: 8px;
+ border-radius: 50px;
+}
