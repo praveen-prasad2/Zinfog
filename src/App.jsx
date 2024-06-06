@@ -6,16 +6,15 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
 function App() {
-
   return (
     <>
       <BrowserRouter>
-    <Header/>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
         </Routes>
-    <Footer/>
+        <Footer />
       </BrowserRouter>
     </>
   );

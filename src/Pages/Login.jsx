@@ -8,7 +8,7 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-// Login Function
+  // Login Function
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new URLSearchParams();
@@ -19,8 +19,7 @@ function Login() {
     data.append("grant_type", "client_credentials");
 
     try {
-
-// API Calling  
+      // API Calling
       const res = await axios.post(
         "https://accesslabbeta.stagingserverhub.com/api/b2b/login",
         data,
@@ -132,7 +131,9 @@ function Login() {
             Terms and Conditions
           </span>{" "}
           |{" "}
-          <span className="text-zinfog-primary cursor-pointer">Privacy Policy</span>
+          <span className="text-zinfog-primary cursor-pointer">
+            Privacy Policy
+          </span>
         </h1>
       </div>
     </div>

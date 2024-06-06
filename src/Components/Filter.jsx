@@ -2,11 +2,11 @@ import React from "react";
 import { FiSearch } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 
-
 function Filter() {
   return (
     <div>
-      <div className="flex flex-row justify-evenly bg-[white] py-10 mt-5 border-2 mx-5">
+      {/* Filter Options  */}
+      <div className="flex flex-row justify-evenly bg-[white] py-10 mt-5 border-[1px] border-zinfog-black mx-5">
         {/* Input Column 1  */}
         <div className="flex flex-col poppins-regular space-y-2">
           <div className="flex items-center gap-2">
@@ -16,7 +16,7 @@ function Filter() {
             <input
               type="date"
               id="from-date"
-              className="w-[300px] h-[35px] border-2 border-[#505050] rounded-[5px] pl-3 "
+              className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3 "
             />
           </div>
           <div className="flex items-center gap-2">
@@ -26,7 +26,7 @@ function Filter() {
             <input
               type="text"
               id="patient-name"
-              className="w-[300px] h-[35px] border-2 border-[#505050] rounded-[5px] pl-3"
+              className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3"
             />
           </div>
           <div className="flex items-center gap-2">
@@ -36,7 +36,7 @@ function Filter() {
             <input
               type="text"
               id="bill-no"
-              className="w-[300px] h-[35px] border-2 border-[#505050] rounded-[5px] pl-3"
+              className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3"
             />
           </div>
         </div>
@@ -50,7 +50,7 @@ function Filter() {
             <input
               type="date"
               id="to-date"
-              className="w-[300px] h-[35px] border-2 border-[#505050] rounded-[5px] pl-3 "
+              className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3 "
             />
           </div>
           <div className="flex items-center gap-2">
@@ -60,7 +60,7 @@ function Filter() {
             <input
               type="text"
               id="hospital-id"
-              className="w-[300px] h-[35px] border-2 border-[#505050] rounded-[5px] pl-3 "
+              className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3 "
             />
           </div>
         </div>
@@ -74,7 +74,7 @@ function Filter() {
             <select
               name="doctors"
               id="refer-by"
-              className="w-[300px] h-[35px] border-2 border-[#505050] rounded-[5px] pl-3 "
+              className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3 "
             >
               <option value="doctor1">Doctor 1</option>
               <option value="doctor2">Doctor 2</option>
@@ -88,7 +88,7 @@ function Filter() {
             <select
               name="status"
               id="status"
-              className="w-[300px] h-[35px] border-2 border-[#505050] rounded-[5px] pl-3 "
+              className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3 "
             >
               <option value="ready">Ready</option>
               <option value="progress">In Progress</option>
@@ -97,13 +97,22 @@ function Filter() {
           </div>
         </div>
       </div>
-      <div className="flex flex-row justify-between items-center mx-5 px-2 border-2 h-[70px]"> 
+      {/* Filter Buttons  */}
+      <div className="flex flex-row justify-between items-center mx-5 px-2 border-[1px] border-zinfog-black h-[70px]">
         <div>
-          <p>Please provide search criteria and hit search button.</p>
+          <p className="poppins-regular text-zinfog-black text-[16px]">
+            Please provide search criteria and hit search button.
+          </p>
         </div>
         <div className="flex flex-row gap-5">
-            <button className="flex items-center bg-[#]"><FiSearch className="text-[20px]"/>Search</button>
-            <button className="flex items-center"><RxCross2 className="text-[20px]"/>Clear</button>
+          <button className="flex items-center bg-zinfog-primary text-white p-2 w-[100px] rounded-[5px] ">
+            <FiSearch className="text-[20px]" />
+            Search
+          </button>
+          <button className="flex items-center  bg-[#f46c09] text-white p-2 w-[100px] rounded-[5px] F">
+            <RxCross2 className="text-[20px]" />
+            Clear
+          </button>
         </div>
       </div>
     </div>

@@ -25,8 +25,14 @@ function Footer() {
         </div>
         <div>
           <p className="text-[#505050] poppins-regular text-[14px]">
-            All Rights Reserved | <span className="text-[#1f6acb] cursor-pointer">Terms and Conditions</span> |{" "}
-            <span className="text-[#1f6acb] cursor-pointer">Privacy Policy</span>
+            All Rights Reserved |{" "}
+            <span className="text-[#1f6acb] cursor-pointer">
+              Terms and Conditions
+            </span>{" "}
+            |{" "}
+            <span className="text-[#1f6acb] cursor-pointer">
+              Privacy Policy
+            </span>
           </p>
         </div>
       </div>
