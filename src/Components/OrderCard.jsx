@@ -2,7 +2,7 @@ import React from "react";
 import { FaDownload } from "react-icons/fa";
 import { IoChatbox } from "react-icons/io5";
 
-function OrderCard({status}) {
+function OrderCard({item}) {
     // Function to change the status background color based on the status
   const getStatusClass = (status) => {
     switch (status) {
@@ -21,30 +21,33 @@ function OrderCard({status}) {
     <div className="bg-white mx-5 text-[14px]">
          <div  className="flex flex-row justify-between px-5  items-center poppins-regular">
           <div className="header-item">
-            <h1>A19023</h1>
+            <h1>{item?.order_no}</h1>
           </div>
           <div className="header-item">
-            <h1>01/05/2023</h1>
+            <h1>{item?.start_date}</h1>
           </div>
           <div className="header-item">
-            <h1>Sankaranarayanan</h1>
+            <h1>{item?.patient_name}</h1>
           </div>
           <div className="header-item">
-            <h1>DH2023/0001245</h1>
+            <h1>{item?.hospital_id}</h1>
           </div>
           <div className="header-item">
-            <h1>Anti Leukemia 1 Serum </h1>
+            <h1>{item?.test_name}</h1>
           </div>
           <div className="header-item">
-            <h1>Dr. Arun K Thambi</h1>
+            <h1>{item?.doctor_name}</h1>
           </div>
           <div className="header-item">
-            <h1>03/05/2023</h1>
+            <h1>{item?.end_date}</h1>
           </div>
-          <div className="header-item" id="status"  >
-            <h1 className={`${getStatusClass(status)} px-3 py-1 w-32 rounded-[50px] poppins-regular text-zinfog-black`}>{status}</h1>
+          <div  id="status" className="header-item" >
+          {/* {`${getStatusClass(status)} */}
+            <h1 className={`flex items-center justify-center px-3 py-1 w-32 rounded-[50px]  poppins-regular text-zinfog-black ${getStatusClass(
+              item?.status )}`}
+            id="status">{item?.status}</h1>
           </div>
-          <div className="header-item flex flex-row text-[20px] text-zinfog-primary gap-5">
+          <div className="header-item flex flex-row text-[20px] text-zinfog-primary gap-5 cursor-pointer">
           <FaDownload />
           <IoChatbox />
           </div>

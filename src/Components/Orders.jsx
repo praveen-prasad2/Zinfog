@@ -1,5 +1,6 @@
 import React from "react";
 import OrderCard from "./OrderCard";
+import orderItems from "../utils/orderItems";
 
 function Orders() {
   return (
@@ -39,9 +40,14 @@ function Orders() {
     </div>
     {/* order Cards  */}
     <div>
-        <OrderCard status={"Ready"}/>
-        <OrderCard status={"Partial Report"}/>
-        <OrderCard status={"Lab Dropped"}/>
+        {
+            orderItems.map((item)=>(
+                <div key={item.id}>
+                    
+                    <OrderCard item={item}/>
+                </div>
+            ))
+        }
     </div>
     </>
     
