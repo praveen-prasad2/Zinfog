@@ -3,6 +3,8 @@ import { FiLogOut } from "react-icons/fi";
 import { useLocation } from "react-router-dom";
 
 function Header() {
+  const location = useLocation();
+
   // Hide Header in the Login Page
 
   if (location.pathname === "/") {
