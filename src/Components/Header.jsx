@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 function Header() {
   // Hide Header in the Login Page
 
-  if (location.pathname === "/login") {
+  if (location.pathname === "/") {
     return null;
   }
   return (

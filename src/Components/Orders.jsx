@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
 import OrderCard from "./OrderCard";
 import orderItems from "../utils/orderItems";
-import { FaCircleChevronLeft } from "react-icons/fa6";
-import { FaCircleChevronRight } from "react-icons/fa6";
+import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
 
 function Orders() {
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 10; // Number reports in one page
+  const itemsPerPage = 10; // Number of reports on one page
 
   const handlePageChange = ({ selected }) => {
     setCurrentPage(selected);
@@ -52,9 +51,9 @@ function Orders() {
         </div>
       </div>
       {/* Order Cards */}
-      <div className="">
+      <div >
         {orderItems.slice(offset, offset + itemsPerPage).map((item) => (
-          <div key={item.id}>
+          <div key={item.order_no}>
             <OrderCard item={item} />
           </div>
         ))}
@@ -64,22 +63,22 @@ function Orders() {
         <ReactPaginate
           previousLabel={
             <FaCircleChevronLeft className="text-[30px] text-zinfog-primary" />
-          } 
+          }
           nextLabel={
             <FaCircleChevronRight className="text-[30px] text-zinfog-primary" />
-          } 
+          }
           breakLabel={"..."}
           pageCount={pageCount}
           marginPagesDisplayed={1}
           pageRangeDisplayed={5}
           onPageChange={handlePageChange}
           activeClassName={"active"}
-          previousClassName={"pagination-prev"} 
-          nextClassName={"pagination-next"} 
-          pageClassName={"pagination-page"} 
-          disabledClassName={"pagination-disabled"} 
-          activeLinkClassName={"pagination-active-link"} 
-          className="flex flex-row items-center  gap-3"
+          previousClassName={"pagination-prev"}
+          nextClassName={"pagination-next"}
+          pageClassName={"pagination-page"}
+          disabledClassName={"pagination-disabled"}
+          activeLinkClassName={"pagination-active-link"}
+          className="flex flex-row items-center gap-3"
         />
       </div>
     </>

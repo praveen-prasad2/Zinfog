@@ -11,7 +11,7 @@ function Home() {
   const toggleFilter = () => {
     setShowFilter((prev) => !prev);
   };
-  return (
+  return (  
     <div className="bg-[#e4fbfb] h-auto">
       {/* Head Section Including Filter and Search  */}
       <div className=" flex flex-row justify-between px-10 pt-5">

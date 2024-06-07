@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
+import orderItems from "../utils/orderItems";
 
 function Filter() {
   // States for the Inputs
@@ -11,6 +12,15 @@ function Filter() {
   const [hospitalId, setHospitalId] = useState("");
   const [referBy, setReferBy] = useState("");
   const [status, setStatus] = useState("");
+
+  // State for storing data from JSON
+  const [data, setData] = useState(orderItems);
+
+  // Log orderItems and data to check if they have data
+  useEffect(() => {
+    console.log("Order Items: ", orderItems);
+    console.log("Data loaded: ", data);
+  }, [data]);
 
   // Clear values Function
   const clearInputs = () => {
@@ -23,6 +33,37 @@ function Filter() {
     setStatus("");
   };
 
+  // Filter Function
+  const filterData = () => {
+    if (!data.length) {
+      console.log("Data is not loaded yet.");
+      return;
+    }
+
+    console.log("Filtering with:", {
+      fromDate,
+      toDate,
+      patientName,
+      billNo,
+      hospitalId,
+      referBy,
+      status,
+    });
+    const filteredData = data.filter((item) => {
+      console.log("Filtering item:", item);
+      return (
+        (!fromDate || new Date(item.start_date) >= new Date(fromDate)) &&
+        (!toDate || new Date(item.end_date) <= new Date(toDate)) &&
+        (!patientName || item.patient_name?.toLowerCase().includes(patientName.toLowerCase())) &&
+        (!billNo || item.bill_number?.includes(billNo)) &&
+        (!hospitalId || item.hospital_id?.includes(hospitalId)) &&
+        (!referBy || item.doctor_name === referBy) && // Corrected to referBy
+        (!status || item.status === status)
+      );
+    });
+
+    console.log("Filtered Data: ", filteredData);
+  };
   return (
     <div>
       {/* Filter Options */}
@@ -37,7 +78,6 @@ function Filter() {
               type="date"
               id="from-date"
               value={fromDate}
-              //  clear the value in the input  using Onchange
               onChange={(e) => setFromDate(e.target.value)}
               className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3"
             />
@@ -110,10 +150,10 @@ function Filter() {
               className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3"
             >
               <option value="">Select Doctor</option>
-              <option value="doctor1">Dr. Arun K Thambi</option>
-              <option value="doctor2">Dr. Abdul Siddique</option>
-              <option value="doctor3">Dr. Raveendran</option>
-              <option value="doctor3">Dr. Vignesh Muraleedharan</option>
+              <option value="Dr. Arun K Thambi">Dr. Arun K Thambi</option>
+              <option value="Dr. Abdul Siddique">Dr. Abdul Siddique</option>
+              <option value="Dr. Raveendran">Dr. Raveendran</option>
+              <option value="Dr. Vignesh Muraleedharan">Dr. Vignesh Muraleedharan</option>
             </select>
           </div>
           <div className="flex items-center gap-2">
@@ -143,7 +183,10 @@ function Filter() {
           </p>
         </div>
         <div className="flex flex-row gap-5">
-          <button className="flex items-center bg-zinfog-primary text-white p-2 w-[100px] rounded-[5px]">
+          <button
+            className="flex items-center bg-zinfog-primary text-white p-2 w-[100px] rounded-[5px]"
+            onClick={filterData}
+          >
             <FiSearch className="text-[20px]" />
             Search
           </button>
@@ -156,9 +199,9 @@ function Filter() {
           </button>
         </div>
       </div>
+      
     </div>
   );
 }
 
 export default Filter;
-

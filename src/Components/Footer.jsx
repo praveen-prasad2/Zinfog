@@ -7,7 +7,7 @@ function Footer() {
 
   // Hide Footer  in the Login Page
 
-  if (location.pathname === "/login") {
+  if (location.pathname === "/") {
     return null;
   }
 
