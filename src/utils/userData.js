@@ -1,4 +1,4 @@
 export const userData = {
-    "username": "praveen",
-    "password": "123"
-}
+  username: "zinfog",
+  password: "123",
+};

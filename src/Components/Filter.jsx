@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 import orderItems from "../utils/orderItems";
@@ -17,14 +17,8 @@ function Filter({ setOrders, setShowFilter }) {
   // State for storing data from JSON
   const [data, setData] = useState(orderItems);
 
-  // Log orderItems and data to check if they have data
-  useEffect(() => {
-    console.log("Order Items: ", orderItems);
-    console.log("Data loaded: ", data);
-  }, [data]);
-
   // Clear values Function
-  const clearInputs =  () => {
+  const clearInputs = () => {
     setFromDate("");
     setToDate("");
     setPatientName("");
@@ -41,18 +35,10 @@ function Filter({ setOrders, setShowFilter }) {
       return;
     }
 
-    console.log("Filtering with:", {
-      fromDate,
-      toDate,
-      patientName,
-      billNo,
-      hospitalId,
-      referBy,
-      status,
-    });
+
 
     const filteredData = data.filter((item) => {
-      console.log("Filtering item:", item);
+   
       return (
         (!fromDate || new Date(item.start_date) >= new Date(fromDate)) &&
         (!toDate || new Date(item.end_date) <= new Date(toDate)) &&
@@ -70,7 +56,6 @@ function Filter({ setOrders, setShowFilter }) {
     setShowFilter(false);
 
     setOrders(filteredData);
-    console.log("Filtered Data: ", filteredData);
   };
 
   return (

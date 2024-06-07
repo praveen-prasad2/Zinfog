@@ -6,14 +6,14 @@ function OrderCard({ item }) {
   // Function to change the status background color based on the status
   const getStatusClass = (status) => {
     switch (status) {
-      case 'Ready':
-        return 'bg-[#89ffaa]';
-      case 'Partial Report':
-        return 'bg-[#e7f880]';
-      case 'Lab Dropped':
-        return 'bg-[#f2a38a]';
+      case "Ready":
+        return "bg-[#89ffaa]";
+      case "Partial Report":
+        return "bg-[#e7f880]";
+      case "Lab Dropped":
+        return "bg-[#f2a38a]";
       default:
-        return 'bg-gray-400';
+        return "bg-gray-400";
     }
   };
 
