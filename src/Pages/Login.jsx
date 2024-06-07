@@ -1,40 +1,36 @@
 import React, { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { IoCallOutline } from "react-icons/io5";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { userData } from "../utils/userData";
 
 function Login() {
   const [response, setResponse] = useState(null);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const [error, setError] = useState(false); // state to display error
+
+  const navigate = useNavigate();
+
   // Login Function
-  const handleSubmit = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-    const data = new URLSearchParams();
-    data.append("client_id", "ei0gvH1bk8wNVj0xqKgtGVzxa3yWXa");
-    data.append("client_secret", "Yjq2KXplGi6Niarcp1gn6PP7OrMDlP");
-    data.append("user_name", "daya");
-    data.append("password", "123");
-    data.append("grant_type", "client_credentials");
 
     try {
-      // API Calling
-      const res = await axios.post(
-        "https://accesslabbeta.stagingserverhub.com/api/b2b/login",
-        data,
-        {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
+      if (password && username) {
+        if (userData.username === username && userData.password === password) {
+          navigate("/home");
+          return;
         }
-      );
-      setResponse(res.data);
-      console.log(res.data);
+      }
+
+      console.log("Enter valid credentials");
+      setError(true);
     } catch (error) {
-      console.error("Error:", error);
+      console.log(error.message);
     }
-  };
+  }
 
   return (
     <div className="w-screen h-auto loginBg flex flex-col justify-center items-center py-10">
@@ -73,7 +69,7 @@ function Login() {
                 name="username"
                 placeholder="Enter email Id"
                 id="username"
-                value={username}
+                // value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
               <label
@@ -88,7 +84,7 @@ function Login() {
                 name="password"
                 placeholder="Password"
                 id="password"
-                value={password}
+                // value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <div className="w-[300px] h-[50px] flex flex-col items-center pt-5">
@@ -104,6 +100,13 @@ function Login() {
               Reset Password
             </h1>
           </div>
+          {/* Show error message if the credentials is wrong  */}
+          {error && (
+            <p className="text-[12px] text-red-600 underline poppins-semibold pt-5">
+              Wrong Credentials! your email Id or password entered is wrong
+            </p>
+          )}
+
           {/* Mobile number & privacy Policy */}
           <div className="flex justify-center items-center text-zinfog-primary py-5 text-[20px]">
             <IoCallOutline className="text-[25px]" />
