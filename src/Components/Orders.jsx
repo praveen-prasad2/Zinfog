@@ -61,8 +61,8 @@ function Orders({ orderItems }) {
         ))}
       </div>
       {/* Pagination */}
-      <div className="bg-white pagination-container flex flex-row justify-center items-center py-5 poppins-semibold mx-5">
-        <ReactPaginate
+      <div className="bg-white pagination-container flex flex-row justify-center items-center py-5 poppins-semibold mx-5 cursor-pointer">
+        <ReactPaginate  
           previousLabel={
             <FaCircleChevronLeft className="text-[30px] text-zinfog-primary" />
           }
