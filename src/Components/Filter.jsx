@@ -3,8 +3,9 @@ import { FiSearch } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 import orderItems from "../utils/orderItems";
 
-function Filter() {
+function Filter({ setOrders, setShowFilter }) {
   // States for the Inputs
+
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
   const [patientName, setPatientName] = useState("");
@@ -23,7 +24,7 @@ function Filter() {
   }, [data]);
 
   // Clear values Function
-  const clearInputs = () => {
+  const clearInputs =  () => {
     setFromDate("");
     setToDate("");
     setPatientName("");
@@ -31,9 +32,9 @@ function Filter() {
     setHospitalId("");
     setReferBy("");
     setStatus("");
+    filterData();
   };
 
-  // Filter Function
   const filterData = () => {
     if (!data.length) {
       console.log("Data is not loaded yet.");
@@ -49,12 +50,16 @@ function Filter() {
       referBy,
       status,
     });
+
     const filteredData = data.filter((item) => {
       console.log("Filtering item:", item);
       return (
         (!fromDate || new Date(item.start_date) >= new Date(fromDate)) &&
         (!toDate || new Date(item.end_date) <= new Date(toDate)) &&
-        (!patientName || item.patient_name?.toLowerCase().includes(patientName.toLowerCase())) &&
+        (!patientName ||
+          item.patient_name
+            ?.toLowerCase()
+            .includes(patientName.toLowerCase())) &&
         (!billNo || item.bill_number?.includes(billNo)) &&
         (!hospitalId || item.hospital_id?.includes(hospitalId)) &&
         (!referBy || item.doctor_name === referBy) && // Corrected to referBy
@@ -62,8 +67,12 @@ function Filter() {
       );
     });
 
+    setShowFilter(false);
+
+    setOrders(filteredData);
     console.log("Filtered Data: ", filteredData);
   };
+
   return (
     <div>
       {/* Filter Options */}
@@ -153,7 +162,9 @@ function Filter() {
               <option value="Dr. Arun K Thambi">Dr. Arun K Thambi</option>
               <option value="Dr. Abdul Siddique">Dr. Abdul Siddique</option>
               <option value="Dr. Raveendran">Dr. Raveendran</option>
-              <option value="Dr. Vignesh Muraleedharan">Dr. Vignesh Muraleedharan</option>
+              <option value="Dr. Vignesh Muraleedharan">
+                Dr. Vignesh Muraleedharan
+              </option>
             </select>
           </div>
           <div className="flex items-center gap-2">
@@ -168,9 +179,9 @@ function Filter() {
               className="w-[300px] h-[35px] border-2 border-zinfog-black rounded-[5px] pl-3"
             >
               <option value="">Select Status</option>
-              <option value="ready">Ready</option>
-              <option value="progress">Partial Report</option>
-              <option value="notready">Lab Dropped</option>
+              <option value="Ready">Ready</option>
+              <option value="Partial Report">Partial Report</option>
+              <option value="Lab Dropped">Lab Dropped</option>
             </select>
           </div>
         </div>
@@ -199,7 +210,6 @@ function Filter() {
           </button>
         </div>
       </div>
-      
     </div>
   );
 }

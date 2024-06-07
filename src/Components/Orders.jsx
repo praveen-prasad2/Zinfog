@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
 import OrderCard from "./OrderCard";
-import orderItems from "../utils/orderItems";
 import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
+import orderData from "../utils/orderItems";
 
-function Orders() {
+function Orders({ orderItems }) {
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 10; // Number of reports on one page
 
@@ -12,8 +12,10 @@ function Orders() {
     setCurrentPage(selected);
   };
 
+  const orders = orderItems || orderData;
+
   const offset = currentPage * itemsPerPage;
-  const pageCount = Math.ceil(orderItems.length / itemsPerPage);
+  const pageCount = Math.ceil(orders?.length / itemsPerPage);
 
   return (
     <>
@@ -51,9 +53,9 @@ function Orders() {
         </div>
       </div>
       {/* Order Cards */}
-      <div >
-        {orderItems.slice(offset, offset + itemsPerPage).map((item) => (
-          <div key={item.order_no}>
+      <div>
+        {orders?.slice(offset, offset + itemsPerPage)?.map((item) => (
+          <div key={item?.order_no}>
             <OrderCard item={item} />
           </div>
         ))}

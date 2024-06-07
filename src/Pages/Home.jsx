@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
 import { IoFunnelSharp } from "react-icons/io5";
 import Filter from "../Components/Filter";
@@ -7,13 +7,14 @@ import Orders from "../Components/Orders";
 
 function Home() {
   const [showFilter, setShowFilter] = useState(false);
+  const [orders, setOrders] = useState();
 
   const toggleFilter = () => {
     setShowFilter((prev) => !prev);
   };
-  return (  
+  return (
     <div className="bg-[#e4fbfb] h-auto">
-      {/* Head Section Including Filter and Search  */}
+      {/* Head Section Including Filter and Search */}
       <div className=" flex flex-row justify-between px-10 pt-5">
         <h1 className="poppins-semibold text-[20px] text-zinfog-primary">
           Patient Reports
@@ -39,15 +40,17 @@ function Home() {
       {/* Filter Component  */}
       <div
         className={`transition-all duration-300 ease-in-out ${
-          showFilter ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+          showFilter
+            ? "max-h-screen opacity-100"
+            : "max-h-0 opacity-0 overflow-hidden"
         }`}
       >
-        <Filter />
+        <Filter setShowFilter={setShowFilter} setOrders={setOrders} />
       </div>
-     {/* Orders Component  */}
-     <div>
-      <Orders/>
-     </div>
+      {/* Orders Component  */}
+      <div>
+        <Orders orderItems={orders} />
+      </div>
     </div>
   );
 }
