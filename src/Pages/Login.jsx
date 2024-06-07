@@ -33,8 +33,8 @@ function Login() {
   }
 
   return (
-    <div className="w-screen h-auto loginBg flex flex-col justify-center items-center py-10">
-      <div className="w-[500px] h-[650px] bg-white rounded-[50px]">
+    <div className=" h-auto loginBg flex flex-col justify-center items-center py-10">
+      <div className="w-[500px] h-[650px] bg-white rounded-[50px] relative">
         {/* Vector */}
         <img src="/Images/plus-vector.svg" alt="" className="pt-10 pl-10" />
 
@@ -45,7 +45,8 @@ function Login() {
             alt=""
             className="flex justify-center items-center"
           />
-          {/* <img src="/Images/Vector3.svg" alt="" className="" /> */}
+          <img src="/Images/Vector2.svg" alt="" className="absolute right-5 top-20  w-[60px]" />
+
 
           <h1 className="poppins-extrabold text-zinfog-primary py-5 text-[20px]">
             Report Download Portal
@@ -64,7 +65,7 @@ function Login() {
                 Username
               </label>
               <input
-                className="w-[300px] h-[40px] rounded-[5px] px-2"
+                className="w-[300px] h-[40px] rounded-[5px] px-2 poppins-regular"
                 type="text"
                 name="username"
                 placeholder="Enter email Id"
@@ -79,7 +80,7 @@ function Login() {
                 Password
               </label>
               <input
-                className="w-[300px] h-[40px] rounded-[5px] px-2"
+                className="w-[300px] h-[40px] rounded-[5px] px-2 poppins-regular"
                 type="password"
                 name="password"
                 placeholder="Password"
@@ -96,7 +97,7 @@ function Login() {
                 </button>
               </div>
             </form>
-            <h1 className="poppins-semibold text-[14px] text-[#505050] underline pt-5">
+            <h1 className="poppins-semibold text-[14px] text-[#505050] underline pt-5 cursor-pointer">
               Reset Password
             </h1>
           </div>
@@ -108,7 +109,9 @@ function Login() {
           )}
 
           {/* Mobile number & privacy Policy */}
-          <div className="flex justify-center items-center text-zinfog-primary py-5 text-[20px]">
+          <div className="flex justify-center items-center text-zinfog-primary py-10 text-[20px]">
+          <img src="/Images/Vector2.svg" alt="" className="absolute left-5 bottom-18 w-[80px]" />
+
             <IoCallOutline className="text-[25px]" />
             <h1 className="poppins-bold">(+91)9288008801</h1>
           </div>
@@ -126,7 +129,7 @@ function Login() {
       </div>
 
       {/* Copyright & Privacy Policy */}
-      <div className="w-screen text-white flex flex-row justify-around pt-5 poppins-semibold text-[12px]">
+      <div className="w-[100%] text-white flex flex-row justify-around pt-5 poppins-semibold text-[12px]">
         <h1>Copyright © 2024 Access Home Lab Solutions</h1>
         <h1>
           All Rights Reserved |{" "}
